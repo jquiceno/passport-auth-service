@@ -1,0 +1,17 @@
+{
+  "name": "passport-auth-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^9.0.0",
+    "axios": "^0.19.2",
+    "passport-strategy": "^1.0.0"
+  }
+}

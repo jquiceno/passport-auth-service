@@ -1,17 +1,25 @@
 {
   "name": "passport-auth-service",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Passport strategy autentication in remote auth service based in remote JWT validation ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["passport", "auth-service"],
+  "author": "jquiceno",
   "license": "ISC",
   "dependencies": {
     "@hapi/boom": "^9.0.0",
     "axios": "^0.19.2",
     "passport-strategy": "^1.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jquiceno/passport-auth-service"
+  },
+  "bugs": {
+    "url": "https://github.com/jquiceno/passport-auth-service/issues"
+  },
+  "homepage": "https://github.com/jquiceno/passport-auth-service#readme"
 }

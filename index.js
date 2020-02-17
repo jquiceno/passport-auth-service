@@ -1,4 +1,5 @@
 'use strict'
+
 const { Strategy } = require('passport-strategy')
 const util = require('util')
 const axios = require('axios')
@@ -11,6 +12,7 @@ const boom = require('@hapi/boom')
  * @param {Function} verify
  * @api public
  */
+
 function AuthServiceStrategy (options = {}, verify = false) {
   Strategy.call(this)
 
@@ -34,19 +36,19 @@ util.inherits(AuthServiceStrategy, Strategy)
  * @api protected
  */
 AuthServiceStrategy.prototype.authenticate = async function (req) {
-  var authorization = req.headers.authorization
-  if (!authorization) { return this.fail(this._challenge()) }
+  const authorization = req.headers.authorization
+  if (!authorization) return this.fail(this._challenge())
 
-  var parts = authorization.split(' ')
-  if (parts.length < 2) { return this.fail(400) }
+  const parts = authorization.split(' ')
+  if (parts.length < 2) return this.fail(400)
 
-  var scheme = parts[0]
-  var jwt = parts[1]
+  const scheme = parts[0]
+  const jwt = parts[1]
 
-  if (!/Bearer/i.test(scheme)) { return this.fail(this._challenge()) }
-  if (!jwt) { return this.fail(400) }
+  if (!/Bearer/i.test(scheme)) return this.fail(this._challenge())
+  if (!jwt) return this.fail(400)
 
-  var self = this
+  const self = this
 
   try {
     const { data } = await axios.get(`${this._serviceUrl}/auth/tokens/${jwt}`)
@@ -54,10 +56,9 @@ AuthServiceStrategy.prototype.authenticate = async function (req) {
 
     if (!tokenInfo.isValid) throw boom.unauthorized(`Error, ${tokenInfo.message}`)
 
-    console.log(tokenInfo)
     self.success(tokenInfo)
   } catch (error) {
-    if (error) { return self.error(error) }
+    if (error) return self.error(error)
   }
 }
 
